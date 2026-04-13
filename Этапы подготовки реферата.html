@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Этапы подготовки реферата</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        @media (max-width: 1920px) {
+            html { font-size: 16px; }
+        }
+
+        @media (max-width: 1440px) {
+            html { font-size: 15px; }
+        }
+
+        @media (max-width: 1024px) {
+            html { font-size: 14px; }
+        }
+
+        @media (max-width: 768px) {
+            html { font-size: 13px; }
+        }
+
+        @media (max-width: 480px) {
+            html { font-size: 12px; }
+        }
+
+        :root {
+            --bg-dark: #09090b;
+            --surface: #18181b;
+            --border: #27272a;
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+            --accent-1: #6366f1;
+            --accent-2: #3b82f6;
+            --accent-3: #0ea5e9;
+            --accent-4: #06b6d4;
+            --glass: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --gradient: linear-gradient(135deg, #6366f1 0%, #0ea5e9 100%);
+            --gradient-alt: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            --glow: rgba(99, 102, 241, 0.2);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #0f0f0f 100%);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(3, 165, 233, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+            animation: bgFloat 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes bgFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(2%, 2%) rotate(1deg); }
+            66% { transform: translate(-1%, 1%) rotate(-0.5deg); }
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-align: start;
+            padding: clamp(2rem, 8vw, 4rem);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-content {
+            max-width: min(90%, 900px);
+            width: 100%;
+            z-index: 2;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+            color: var(--accent-3);
+            margin-bottom: clamp(1rem, 3vw, 1.5rem);
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        /* Заголовки */
+        h1 {
+            font-size: clamp(1.75rem, 6vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+            line-height: 1.15;
+            color: var(--text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 4vw, 2.25rem);
+            font-weight: 700;
+            margin-bottom: clamp(1rem, 2vw, 1.5rem);
+            color: var(--text-primary);
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        h3 {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        h4 {
+            font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        p {
+            font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        /* Divider */
+        .divider {
+            height: 2px;
+            border: none;
+            background: var(--gradient);
+            margin: clamp(1rem, 3vw, 1.5rem) 0;
+            opacity: 0.5;
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: clamp(0.75rem, 2vw, 1.25rem);
+            padding: clamp(1.25rem, 3vw, 1.75rem);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.3);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px var(--glow);
+        }
+
+        .glass-card.accent::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 16px 16px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .glass-card.accent:hover::before {
+            opacity: 1;
+        }
+
+        /* Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(1rem, 2vw, 1.5rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: clamp(0.75rem, 1.5vw, 1.25rem);
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        /* Icon Circle */
+        .icon-circle {
+            width: clamp(2.5rem, 6vw, 3.5rem);
+            height: clamp(2.5rem, 6vw, 3.5rem);
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+            box-shadow: 0 8px 30px var(--glow);
+            flex-shrink: 0;
+        }
+
+        .icon-circle svg {
+            width: clamp(1.25rem, 3vw, 1.75rem);
+            height: clamp(1.25rem, 3vw, 1.75rem);
+        }
+
+        /* Title Slide */
+        .title-slide {
+            text-align: center;
+        }
+
+        .title-slide h1 {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .title-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.35rem);
+            color: var(--text-secondary);
+            margin-bottom: clamp(2rem, 5vw, 2.5rem);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .authors-grid {
+            display: flex;
+            justify-content: center;
+            gap: clamp(0.75rem, 1.5vw, 1.25rem);
+            flex-wrap: wrap;
+            margin-bottom: clamp(1.5rem, 3vw, 2rem);
+        }
+
+        .author-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(0.4rem, 1vw, 0.6rem);
+            padding: clamp(0.75rem, 1.5vw, 1.25rem);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: clamp(0.75rem, 1.5vw, 1rem);
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .author-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-1);
+        }
+
+        .author-avatar {
+            width: clamp(2.5rem, 5vw, 3rem);
+            height: clamp(2.5rem, 5vw, 3rem);
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            color: white;
+        }
+
+        .author-name {
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: clamp(0.8rem, 1.8vw, 1rem);
+            text-align: center;
+        }
+
+        .group-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: clamp(0.6rem, 1.5vw, 1rem);
+            padding: clamp(0.6rem, 1.5vw, 1rem);
+            background: var(--glass);
+            border: 1px solid var(--accent-1);
+            border-radius: 50px;
+            font-size: clamp(0.8rem, 1.8vw, 1rem);
+            color: var(--accent-1);
+            backdrop-filter: blur(20px);
+        }
+
+        /* List */
+        .styled-list {
+            list-style: none;
+            margin: clamp(0.75rem, 1.5vw, 1.25rem) 0;
+        }
+
+        .styled-list li {
+            padding: clamp(0.6rem, 1.2vw, 0.95rem) clamp(0.75rem, 1.5vw, 1.25rem) clamp(0.6rem, 1.2vw, 0.95rem) clamp(1.5rem, 2.5vw, 2.5rem);
+            position: relative;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);
+            font-size: clamp(0.85rem, 1.6vw, 1rem);
+        }
+
+        .styled-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-3);
+            font-weight: 600;
+        }
+
+        /* Process Flow */
+        .process-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(0.5rem, 1vw, 1rem);
+            flex-wrap: wrap;
+            margin: clamp(1.5rem, 3vw, 2rem) 0;
+        }
+
+        .process-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(0.6rem, 1.2vw, 1rem);
+        }
+
+        .step-icon {
+            width: clamp(2.5rem, 5vw, 3.5rem);
+            height: clamp(2.5rem, 5vw, 3.5rem);
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 8px 30px var(--glow);
+        }
+
+        .step-label {
+            font-size: clamp(0.8rem, 1.6vw, 1rem);
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 100px;
+            line-height: 1.3;
+        }
+
+        .process-arrow {
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            color: var(--accent-3);
+            animation: arrowPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes arrowPulse {
+            0%, 100% { opacity: 1; transform: translateX(0); }
+            50% { opacity: 0.5; transform: translateX(5px); }
+        }
+
+        /* Stats */
+        .stat-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
+            padding: clamp(1rem, 2vw, 1.5rem);
+            text-align: center;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-1);
+        }
+
+        .stat-number {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: clamp(0.4rem, 1vw, 0.75rem);
+        }
+
+        .stat-label {
+            font-size: clamp(0.8rem, 1.6vw, 1rem);
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: clamp(1rem, 3vw, 2rem);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.6rem, 1.2vw, 1rem);
+            z-index: 100;
+        }
+
+        .nav-dot {
+            width: clamp(0.6rem, 1.2vw, 0.75rem);
+            height: clamp(0.6rem, 1.2vw, 0.75rem);
+            border-radius: 50%;
+            background: var(--glass);
+            border: 2px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--accent-1);
+            border-color: var(--accent-1);
+            box-shadow: 0 0 15px var(--accent-1);
+        }
+
+        .nav-dot:hover {
+            border-color: var(--accent-1);
+            transform: scale(1.2);
+        }
+
+        /* Slide Counter */
+        .slide-counter {
+            position: fixed;
+            bottom: clamp(1rem, 2vw, 2rem);
+            right: clamp(1rem, 2vw, 2rem);
+            padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.8rem, 1.5vw, 1.25rem);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: clamp(0.7rem, 1.4vw, 0.9rem);
+            color: var(--text-secondary);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            font-weight: 500;
+        }
+
+        /* Progress Bar */
+        .progress-wrap {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--glass);
+            z-index: 101;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient);
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        /* Footer */
+        .author-footer {
+            position: fixed;
+            bottom: clamp(1rem, 2vw, 2rem);
+            left: clamp(1rem, 2vw, 2rem);
+            padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.8rem, 1.5vw, 1.25rem);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: clamp(0.65rem, 1.3vw, 0.85rem);
+            color: var(--text-muted);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            max-width: min(90vw, 300px);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Animations */
+        .animate-on-view {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stagger > :nth-child(1) { animation-delay: 0.1s; }
+        .stagger > :nth-child(2) { animation-delay: 0.2s; }
+        .stagger > :nth-child(3) { animation-delay: 0.3s; }
+        .stagger > :nth-child(4) { animation-delay: 0.4s; }
+        .stagger > :nth-child(5) { animation-delay: 0.5s; }
+        .stagger > :nth-child(6) { animation-delay: 0.6s; }
+
+        /* Key Point Card */
+        .key-point {
+            display: flex;
+            gap: clamp(0.75rem, 1.5vw, 1.25rem);
+            padding: clamp(1rem, 2vw, 1.5rem);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: clamp(0.75rem, 1.5vw, 1.25rem);
+            backdrop-filter: blur(20px);
+            align-items: flex-start;
+            transition: all 0.3s ease;
+            margin-top: clamp(1rem, 2vw, 1.5rem);
+        }
+
+        .key-point:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-1);
+        }
+
+        .key-point-content {
+            flex: 1;
+        }
+
+        .key-point-icon {
+            flex-shrink: 0;
+            width: clamp(2.2rem, 4vw, 3rem);
+            height: clamp(2.2rem, 4vw, 3rem);
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: clamp(1rem, 2vw, 1.4rem);
+        }
+
+        /* Thank You Slide */
+        .thank-you-slide {
+            text-align: center;
+        }
+
+        .thank-you-slide h1 {
+            font-size: clamp(2rem, 7vw, 4rem);
+            margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+        }
+
+        .thank-you-slide p {
+            font-size: clamp(1rem, 2.2vw, 1.4rem);
+            color: var(--text-secondary);
+            margin-bottom: clamp(2rem, 4vw, 2.5rem);
+        }
+
+        /* Key Point - улучшенный стиль */
+        .key-point {
+            display: flex;
+            gap: clamp(1rem, 2vw, 1.5rem);
+            align-items: flex-start;
+            padding: clamp(1.25rem, 2vw, 1.75rem);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(14, 165, 233, 0.04) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: clamp(0.75rem, 2vw, 1.25rem);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .key-point:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(14, 165, 233, 0.08) 100%);
+        }
+
+        .key-point-content {
+            flex: 1;
+        }
+
+        .key-point-content h4 {
+            margin-bottom: clamp(0.4rem, 0.8vw, 0.6rem);
+            font-size: clamp(1rem, 1.8vw, 1.25rem);
+        }
+
+        .key-point-content p {
+            margin-bottom: 0;
+            font-size: clamp(0.9rem, 1.6vw, 1rem);
+        }
+
+        @media (max-width: 768px) {
+            .key-point {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        /* Responsive Optimizations */
+        @media (max-width: 1024px) {
+            .grid-4 { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+            .author-footer { display: none; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-dots { right: 1rem; }
+            .process-flow { gap: 0.5rem; }
+        }
+
+        @media (max-width: 600px) {
+            .nav-dots { display: none; }
+            .key-point { flex-direction: column; align-items: center; text-align: center; }
+            .process-flow { flex-direction: column; gap: 0.5rem; }
+            .process-arrow { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-wrap">
+        <div class="progress-bar"></div>
+    </div>
+
+    <div class="nav-dots" id="navDots"></div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">8</span>
+    </div>
+
+    <div class="author-footer">
+        © Актанов Д., Ашенов К., Тарасов С. • Margulan University
+    </div>
+
+    <!-- Slide 1: Title -->
+    <section id="slide-1">
+        <div class="slide-content title-slide">
+            <div class="badge animate-on-view">
+                <span class="badge-dot"></span>
+                Образование
+            </div>
+            <h1 class="animate-on-view">Этапы подготовки реферата</h1>
+            <p class="title-subtitle animate-on-view">Полное руководство от выбора темы до защиты</p>
+            
+            <hr class="divider animate-on-view">
+
+            <div class="authors-grid stagger">
+                <div class="author-card animate-on-view">
+                    <div class="author-avatar">А</div>
+                    <div class="author-name">Актанов Д.</div>
+                </div>
+                <div class="author-card animate-on-view">
+                    <div class="author-avatar">А</div>
+                    <div class="author-name">Ашенов К.</div>
+                </div>
+                <div class="author-card animate-on-view">
+                    <div class="author-avatar">Т</div>
+                    <div class="author-name">Тарасов С.</div>
+                </div>
+            </div>
+
+            <div class="group-badge animate-on-view">
+                <span>ИМ-32</span>
+                <span>•</span>
+                <span>Margulan University</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 2: Выбор темы -->
+    <section id="slide-2">
+        <div class="slide-content">
+            <div class="badge animate-on-view">
+                <span class="badge-dot"></span>
+                Этап 1
+            </div>
+            <h2 class="animate-on-view">Выбор темы и формулировка цели</h2>
+            <hr class="divider animate-on-view">
+
+            <div class="grid-2 stagger">
+                <div class="glass-card animate-on-view accent">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"></path>
+                        </svg>
+                    </div>
+                    <h4>Правильный выбор</h4>
+                    <p>Выберите тему, которая вас интересует и соответствует требованиям преподавателя</p>
+                    <ul class="styled-list">
+                        <li>Актуальность</li>
+                        <li>Доступность источников</li>
+                        <li>Глубина раскрытия</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card animate-on-view accent">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="7" r="4"></circle>
+                            <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
+                        </svg>
+                    </div>
+                    <h4>Формулировка цели</h4>
+                    <p>Чётко определите, что вы хотите исследовать и какие вопросы раскрыть</p>
+                    <ul class="styled-list">
+                        <li>Основная цель</li>
+                        <li>Задачи</li>
+                        <li>Гипотеза</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card animate-on-view" style="margin-top: 24px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(14, 165, 233, 0.05) 100%); border: 1px solid rgba(99, 102, 241, 0.2);">
+                <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <path d="M12 2v6M12 16v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M2 12h6M16 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>💡 Совет</h4>
+                        <p>Напишите тему в виде вопроса — это поможет вам сфокусироваться на главном направлении исследования</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 3: Подбор источников -->
+    <section id="slide-3">
+        <div class="slide-content">
+            <div class="badge animate-on-view">
+                <span class="badge-dot"></span>
+                Этап 2
+            </div>
+            <h2 class="animate-on-view">Подбор и анализ источников</h2>
+            <hr class="divider animate-on-view">
+
+            <div class="process-flow animate-on-view">
+                <div class="process-step">
+                    <div class="step-icon">1</div>
+                    <div class="step-label">Поиск</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-icon">2</div>
+                    <div class="step-label">Отбор</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-icon">3</div>
+                    <div class="step-label">Анализ</div>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <div class="step-icon">4</div>
+                    <div class="step-label">Синтез</div>
+                </div>
+            </div>
+
+            <div class="grid-2 stagger" style="margin-top: 32px;">
+                <div class="glass-card animate-on-view">
+                    <h4>Источники информации</h4>
+                    <ul class="styled-list">
+                        <li>Научные статьи</li>
+                        <li>Монографии</li>
+                        <li>Учебники</li>
+                        <li>Электронные базы</li>
+                        <li>Интернет-ресурсы</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card animate-on-view">
+                    <h4>Критерии отбора</h4>
+                    <ul class="styled-list">
+                        <li>Авторитетность</li>
+                        <li>Актуальность</li>
+                        <li>Релевантность</li>
+                        <li>Достоверность</li>
+                        <li>Полнота информации</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 4: Составление плана -->
+    <section id="slide-4">
+        <div class="slide-content">
+            <div class="badge animate-on-view">
+                <span class="badge-dot"></span>
+                Этап 3
+            </div>
+            <h2 class="animate-on-view">Составление плана и написание текста</h2>
+            <hr class="divider animate-on-view">
+
+            <div class="grid-2 stagger">
+                <div class="glass-card animate-on-view accent">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h4>Структура плана</h4>
+                    <ul class="styled-list">
+                        <li>Введение</li>
+                        <li>1-3 основных раздела</li>
+                        <li>Заключение</li>
+                        <li>Список литературы</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card animate-on-view accent">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h4>Рекомендации</h4>
+                    <ul class="styled-list">
+                        <li>Пишите кратко</li>
+                        <li>Используйте свои слова</li>
+                        <li>Цитируйте правильно</li>
+                        <li>Проверяйте орфографию</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card animate-on-view" style="margin-top: 24px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(14, 165, 233, 0.05) 100%); border: 1px solid rgba(99, 102, 241, 0.2);">
+                <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <polyline points="12 7 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4>⏱️ Совет по времени</h4>
+                        <p>Не начинайте писать в последний момент. Рекомендуется распределить работу на несколько недель для качественного результата</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 5: Выводы -->
+    <section id="slide-5">
+        <div class="slide-content">
+            <div class="badge animate-on-view">
+                <span class="badge-dot"></span>
+                Этап 4
+            </div>
+            <h2 class="animate-on-view">Выводы и обобщения</h2>
+            <hr class="divider animate-on-view">
+
+            <div class="grid-2 stagger">
+                <div class="glass-card animate-on-view accent">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                            <polyline points="13 2 13 9 20 9"></polyline>
+                            <path d="M9 15h6M9 11h6"></path>
+                        </svg>
+                    </div>
+                    <h4>Структура выводов</h4>
+                    <ul class="styled-list">
+                        <li>Подтверждение гипотезы</li>
+                        <li>Ответ на главный вопрос</li>
+                        <li>Практическое применение</li>
+                        <li>Перспективы развития</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card animate-on-view accent">
+                    <div class="icon-circle">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                            <path d="M21 3v5h-5"></path>
+                            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                            <path d="M3 21v-5h5"></path>
+                        </svg>
+                    </div>
+                    <h4>Типичные ошибки</h4>
+                    <ul class="styled-list">
+                        <li>Повторение текста</li>
+                        <li>Новая информация</li>
+                        <li>Слишком длинные выводы</li>
+                        <li>Слабая связь с гипотезой</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card animate-on-view" style="margin-top: 24px; background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%); border: 1px solid rgba(14, 165, 233, 0.2);">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; text-align: center;">
+                    <div>
+                        <div style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--accent-3); margin-bottom: 8px;">10-15%</div>
+                        <p style="font-size: clamp(0.85rem, 1.5vw, 1rem); margin: 0;">Объём выводов</p>
+                    </div>
+                    <div>
+                        <div style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--accent-2); margin-bottom: 8px;">3-5</div>
+                        <p style="font-size: clamp(0.85rem, 1.5vw, 1rem); margin: 0;">Предложений</p>
+                    </div>
+                    <div>
+                        <div style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--accent-1); margin-bottom: 8px;">100%</div>
+                        <p style="font-size: clamp(0.85rem, 1.5vw, 1rem); margin: 0;">Оригинальность</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6: Итоги -->
+    <section id="slide-6">
+        <div class="slide-content">
+            <div class="badge animate-on-view">
+                <span class="badge-dot"></span>
+                Итоговая информация
+            </div>
+            <h2 class="animate-on-view">Полный цикл подготовки</h2>
+            <hr class="divider animate-on-view">
+
+            <div class="grid-4 stagger">
+                <div class="glass-card animate-on-view accent" style="text-align: center;">
+                    <div class="step-icon" style="margin: 0 auto 12px; background: linear-gradient(135deg, #6366f1, #3b82f6);">1</div>
+                    <h4>Выбор темы</h4>
+                    <p style="font-size: 0.9rem;">1-2 дня</p>
+                </div>
+                <div class="glass-card animate-on-view accent" style="text-align: center;">
+                    <div class="step-icon" style="margin: 0 auto 12px; background: linear-gradient(135deg, #3b82f6, #0ea5e9);">2</div>
+                    <h4>Поиск источников</h4>
+                    <p style="font-size: 0.9rem;">3-5 дней</p>
+                </div>
+                <div class="glass-card animate-on-view accent" style="text-align: center;">
+                    <div class="step-icon" style="margin: 0 auto 12px; background: linear-gradient(135deg, #0ea5e9, #06b6d4);">3</div>
+                    <h4>Написание</h4>
+                    <p style="font-size: 0.9rem;">5-10 дней</p>
+                </div>
+                <div class="glass-card animate-on-view accent" style="text-align: center;">
+                    <div class="step-icon" style="margin: 0 auto 12px; background: linear-gradient(135deg, #06b6d4, #10b981);">4</div>
+                    <h4>Редактирование</h4>
+                    <p style="font-size: 0.9rem;">2-3 дня</p>
+                </div>
+            </div>
+
+            <div class="key-point animate-on-view" style="margin-top: 32px;">
+                <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                </div>
+                <div class="key-point-content">
+                    <h4>✨ Ключевой успех</h4>
+                    <p>Систематический подход и ответственное выполнение каждого этапа — залог высокого качества вашего реферата. Не спешите и уделяйте достаточно времени каждому этапу</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 6.5: Полезные советы -->
+    <section id="slide-6-5">
+        <div class="slide-content">
+            <div class="badge animate-on-view">
+                <span class="badge-dot"></span>
+                Практические советы
+            </div>
+            <h2 class="animate-on-view">Основные правила успеха</h2>
+            <hr class="divider animate-on-view">
+
+            <div class="grid-2 stagger">
+                <div class="glass-card animate-on-view">
+                    <h4>✅ Что ускоряет работу</h4>
+                    <ul class="styled-list">
+                        <li>Ясная цель исследования</li>
+                        <li>Подобранные источники</li>
+                        <li>Четкий план структуры</li>
+                        <li>Регулярные перерывы</li>
+                        <li>Внимание к деталям</li>
+                    </ul>
+                </div>
+                <div class="glass-card animate-on-view">
+                    <h4>⚠️ Что замедляет работу</h4>
+                    <ul class="styled-list">
+                        <li>Прокрастинация</li>
+                        <li>Отсутствие плана</li>
+                        <li>Плохая организация</li>
+                        <li>Частые переделки</li>
+                        <li>Неправильное цитирование</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card animate-on-view" style="margin-top: 24px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(10, 177, 149, 0.05) 100%); border: 1px solid rgba(16, 185, 129, 0.2);">
+                <div style="display: flex; gap: 16px; align-items: flex-start;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #0ea5e9); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 style="margin-bottom: 8px;">🎯 Главный совет</h4>
+                        <p style="margin: 0;">Начните со своего интереса к теме. Реферат, написанный с энтузиазмом, всегда получается лучше. Проделайте исследование тщательно, и защита пройдет легко!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Slide 7: Thank You -->
+    <section id="slide-7">
+        <div class="slide-content thank-you-slide">
+            <h1 class="animate-on-view" style="color: transparent; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                Спасибо за внимание!
+            </h1>
+            <p class="animate-on-view" style="margin-bottom: 32px;">Вопросы и обсуждение</p>
+
+            <div class="authors-grid stagger">
+                <div class="author-card animate-on-view">
+                    <div class="author-avatar">А</div>
+                    <div class="author-name">Актанов Д.</div>
+                </div>
+                <div class="author-card animate-on-view">
+                    <div class="author-avatar">А</div>
+                    <div class="author-name">Ашенов К.</div>
+                </div>
+                <div class="author-card animate-on-view">
+                    <div class="author-avatar">Т</div>
+                    <div class="author-name">Тарасов С.</div>
+                </div>
+            </div>
+
+            <div class="group-badge animate-on-view" style="margin-top: 40px;">
+                <span>ИМ-32</span>
+                <span>•</span>
+                <span>Margulan University</span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const sections = document.querySelectorAll('section');
+        const totalSlides = sections.length;
+        const navDotsContainer = document.getElementById('navDots');
+        const currentSlideSpan = document.getElementById('currentSlide');
+        const totalSlidesSpan = document.getElementById('totalSlides');
+        const progressBar = document.querySelector('.progress-bar');
+
+        // Create navigation dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'nav-dot';
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => {
+                sections[i].scrollIntoView({ behavior: 'smooth' });
+            });
+            navDotsContainer.appendChild(dot);
+        }
+
+        const navDots = document.querySelectorAll('.nav-dot');
+        totalSlidesSpan.textContent = totalSlides;
+
+        let currentSlideIndex = 0;
+
+        // Update on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(sections).indexOf(entry.target);
+                    currentSlideIndex = index;
+                    currentSlideSpan.textContent = index + 1;
+                    
+                    navDots.forEach((dot, i) => {
+                        dot.classList.toggle('active', i === index);
+                    });
+
+                    const progress = ((index + 1) / totalSlides) * 100;
+                    progressBar.style.width = progress + '%';
+                }
+            });
+        }, { threshold: 0.5 });
+
+        sections.forEach((section) => observer.observe(section));
+
+        // Keyboard navigation - Fixed
+        document.addEventListener('keydown', (e) => {
+            let nextSlideIndex = -1;
+            
+            if (e.key === 'ArrowDown' || e.key === ' ' || e.key === 'ArrowRight') {
+                e.preventDefault();
+                nextSlideIndex = Math.min(currentSlideIndex + 1, totalSlides - 1);
+            } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                nextSlideIndex = Math.max(currentSlideIndex - 1, 0);
+            }
+
+            if (nextSlideIndex !== -1 && nextSlideIndex !== currentSlideIndex) {
+                sections[nextSlideIndex].scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        // Mouse wheel navigation
+        let lastWheelTime = 0;
+        document.addEventListener('wheel', (e) => {
+            const now = Date.now();
+            if (now - lastWheelTime < 500) return;
+            
+            let nextSlideIndex = -1;
+            
+            if (e.deltaY > 0 && currentSlideIndex < totalSlides - 1) {
+                nextSlideIndex = currentSlideIndex + 1;
+                e.preventDefault();
+            } else if (e.deltaY < 0 && currentSlideIndex > 0) {
+                nextSlideIndex = currentSlideIndex - 1;
+                e.preventDefault();
+            }
+
+            if (nextSlideIndex !== -1) {
+                lastWheelTime = now;
+                sections[nextSlideIndex].scrollIntoView({ behavior: 'smooth' });
+            }
+        }, { passive: false });
+
+        // Touch navigation for mobile
+        let touchStartY = 0;
+        document.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            const touchEndY = e.changedTouches[0].clientY;
+            const diff = touchStartY - touchEndY;
+            
+            if (Math.abs(diff) > 50) {
+                let nextSlideIndex = -1;
+                
+                if (diff > 0 && currentSlideIndex < totalSlides - 1) {
+                    nextSlideIndex = currentSlideIndex + 1;
+                } else if (diff < 0 && currentSlideIndex > 0) {
+                    nextSlideIndex = currentSlideIndex - 1;
+                }
+
+                if (nextSlideIndex !== -1) {
+                    sections[nextSlideIndex].scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+
+        // Update animations on view
+        const animateOnView = (el) => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, { threshold: 0.1 });
+            observer.observe(el);
+        };
+
+        document.querySelectorAll('.animate-on-view').forEach(animateOnView);
+    </script>
+</body>
+</html>
